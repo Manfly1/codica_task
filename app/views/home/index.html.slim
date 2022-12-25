@@ -1,0 +1,28 @@
+.p-5.mt-4.bg-light.rounded-3.shadow-sm
+  .row
+    .col.text-center.general-title
+      h2
+        = t('.general_title')
+  .row.mt-3
+    .col
+      = link_to t('.find_doctor'), doctors_path, class: 'w-100 btn btn-lg btn-outline-primary doctors-link'
+
+      .col
+        = link_to t('.login_as_doctor'), new_doctor_session_path, class: 'w-100 btn btn-lg btn-outline-primary login-doctor-link' 
+  .col
+    = link_to t('.login_as_pacient'), new_user_session_path, class: 'w-100 btn btn-lg btn-outline-primary login-pacient-link' 
+.p-3.mt-3.mb-3.bg-light.rounded-3.shadow-sm
+  .row
+    .col.text-center.popular-categories-title
+      h2
+        = t('.popular_categories')
+  .row.pt-3.pb-3.popular-categories
+    - @categories_line.each do |category|
+      .col
+        .card.text-center.shadow-sm
+          = link_to doctors_path(category_id: category.id), class: 'pop-queries ctegory-link' do
+            p.mt-2
+              span
+                = image_tag(category.image_url(:small), size: '50') if category.image
+            p.text-center.mx-1
+              = category.title

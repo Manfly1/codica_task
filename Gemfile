@@ -22,6 +22,7 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails', '~> 5.1.0'
   gem 'rubocop'
+  gem 'simple_form', '~> 5.1.0'
 end
 
 group :development do
