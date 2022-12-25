@@ -5,6 +5,7 @@ class DeviseCreateDoctors < ActiveRecord::Migration[5.2]
     create_table :doctors do |t|
       ## Database authenticatable
       t.string :phone,              null: false, default: ""
+      t.string :name,               null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
 
       ## Recoverable
