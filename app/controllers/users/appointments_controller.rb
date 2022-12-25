@@ -11,7 +11,7 @@ module Users
     end
 
     def show
-      @appointment = current_user.appointments.closed.find(params[:id])
+      @appointment = current_user.appointments.find(params[:id])
     end
 
     def create
@@ -31,7 +31,7 @@ module Users
     end
 
     def appointments_count_reached?
-      find_doctor.appointments.active.count >= MAX_APPOINTMENTS
+      find_doctor.appointments.count >= MAX_APPOINTMENTS
     end
 
     def permitted_params

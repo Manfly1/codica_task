@@ -17,7 +17,7 @@ class User < ApplicationRecord
   validates :name, presence: true, uniqueness: { case_sensitive: false }
 
   def admin?
-    is_a? Admin
+    is_a? AdminUser
   end
 
   def doctor?

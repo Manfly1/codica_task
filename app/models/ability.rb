@@ -1,7 +1,12 @@
 # frozen_string_literal: true
 
 class Ability
+  include CanCan::Ability
+  
   def initialize(user)
+    
+    binding.pry
+    
     can :manage, :all if user.admin?
 
     return unless user.doctor?

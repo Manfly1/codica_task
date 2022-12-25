@@ -17,12 +17,9 @@
       h2
         = t('.popular_categories')
   .row.pt-3.pb-3.popular-categories
-    - @categories_line.each do |category|
+    - @categories.each do |category|
       .col
         .card.text-center.shadow-sm
           = link_to doctors_path(category_id: category.id), class: 'pop-queries ctegory-link' do
-            p.mt-2
-              span
-                = image_tag(category.image_url(:small), size: '50') if category.image
             p.text-center.mx-1
-              = category.title
+              = category.name

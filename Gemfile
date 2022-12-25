@@ -17,6 +17,9 @@ gem 'aws-sdk-s3', '~> 1.114.0'
 gem 'bootsnap', '~> 1.13.0', require: false
 gem 'cancancan', '~> 3.4.0'
 gem 'slim'
+gem 'pry', '~> 0.13.1'
+gem 'factory_bot_rails', '~> 6.1'
+gem 'ffaker', '~> 2.18'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

@@ -63,28 +63,24 @@ ActiveRecord::Schema.define(version: 2022_12_24_182657) do
     t.string "phone", default: "", null: false
     t.string "name", default: "", null: false
     t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.bigint "category_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_doctors_on_category_id"
+    t.index ["name"], name: "index_doctors_on_name", unique: true
     t.index ["phone"], name: "index_doctors_on_phone", unique: true
-    t.index ["reset_password_token"], name: "index_doctors_on_reset_password_token", unique: true
   end
 
   create_table "users", force: :cascade do |t|
     t.string "phone", default: "", null: false
     t.string "name", default: "", null: false
     t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_users_on_name", unique: true
     t.index ["phone"], name: "index_users_on_phone", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "appointments", "doctors"

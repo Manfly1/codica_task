@@ -15,7 +15,7 @@ module Doctors
 
     def update
       if @appointment.update(permitted_params)
-        @appointment.closed!
+        @appointment.update_column(closed: true)
         redirect_to doctors_appointments_path(closed: true)
       else
         render :edit
@@ -29,7 +29,7 @@ module Doctors
     end
 
     def permitted_params
-      params.require(:appointment).permit(:body)
+      params.require(:appointment).permit(:recommendation)
     end
   end
 end
