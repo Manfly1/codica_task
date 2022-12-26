@@ -5,10 +5,15 @@ AllCops:
   Exclude:
     - 'db/**/*'
     - 'spec/swagger_helper.rb'
+    - 'Gemfile'
+    - 'bin/**/*'
+    - 'config/**/*'
 Style/Documentation:
   Enabled: false
 Layout/LineLength:
   Max: 120
+Style/GuardClause:
+  Enabled: false
 Metrics/LineLength:
   Exclude:
     - 'db/migrate/*.rb'
@@ -16,7 +21,10 @@ Metrics/LineLength:
 Metrics/ModuleLength:
   Exclude:
     - '**/*_spec.rb'
+Metrics/AbcSize:
+  Enabled: false    
 Metrics/BlockLength:
+  Max: 40
   Exclude:
     - 'db/schema.rb'
     - 'spec/controllers/*.rb'

@@ -1,7 +1,7 @@
-class ApplicationController < ActionController::Base
-  protect_from_forgery
+# frozen_string_literal: true
 
-  def access_denied(exception)
-    redirect_to admin_organizations_path, alert: exception.message
+class ApplicationController < ActionController::Base
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to root_url, alert: exception.message
   end
 end

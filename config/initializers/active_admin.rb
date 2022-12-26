@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 ActiveAdmin.setup do |config|
   # == Site Title
   #
   # Set the title that is displayed on the main layout
   # for each of the active admin pages.
   #
-  config.site_title = "Polyclinic App"
+  config.site_title = 'Codica Task'
 
   # Set the link url for the title. For example, to take
   # users to your main site. Defaults to no link.
@@ -16,7 +18,7 @@ ActiveAdmin.setup do |config|
   #
   # Note: Aim for an image that's 21px high so it fits in the header.
   #
-  config.site_title_image = "https://media.istockphoto.com/vectors/caduceus-vector-id1165451954?k=20&m=1165451954&s=612x612&w=0&h=_XT30FUJJ0i5KGeo7ukbXhX4Gf7GLRW6QDQSWo9wLzk="
+  config.site_title_image = 'https://media.istockphoto.com/vectors/caduceus-vector-id1165451954?k=20&m=1165451954&s=612x612&w=0&h=_XT30FUJJ0i5KGeo7ukbXhX4Gf7GLRW6QDQSWo9wLzk='
 
   # == Default Namespace
   #
@@ -82,7 +84,7 @@ ActiveAdmin.setup do |config|
   # because, by default, user gets redirected to Dashboard. If user
   # doesn't have access to Dashboard, he'll end up in a redirect loop.
   # Method provided here should be defined in application_controller.rb.
-  config.on_unauthorized_access = :access_denied
+  # config.on_unauthorized_access = :access_denied
 
   # == Current User
   #
@@ -157,7 +159,7 @@ ActiveAdmin.setup do |config|
   # You can exclude possibly sensitive model attributes from being displayed,
   # added to forms, or exported by default by ActiveAdmin
   #
-  config.filter_attributes = [:encrypted_password, :password, :password_confirmation]
+  config.filter_attributes = %i[encrypted_password password password_confirmation]
 
   # == Localize Date/Time Format
   #

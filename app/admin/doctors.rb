@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 ActiveAdmin.register Doctor, namespace: false do
-  permit_params :doctor_id, :role, :phone, :password, :password_confirmation, category_ids: []
+  permit_params :doctor_id, :type, :phone, :password, :password_confirmation, :avatar, category_ids: []
 
   index do
     selectable_column
@@ -11,9 +13,7 @@ ActiveAdmin.register Doctor, namespace: false do
     end
     column :phone
 
-    column 'categories' do |doctor|
-      doctor.categories
-    end
+    column 'categories', &:categories
     actions
   end
 
@@ -21,6 +21,9 @@ ActiveAdmin.register Doctor, namespace: false do
     attributes_table do
       row :phone
       row :categories
+      row 'Avatar' do |doctor|
+        cl_image_tag url_for(doctor.avatar)
+      end
     end
     active_admin_comments
   end
@@ -29,7 +32,7 @@ ActiveAdmin.register Doctor, namespace: false do
     f.inputs do
       f.input :phone
       f.input :categories, as: :check_boxes
-
+      f.input :avatar, as: :file
       if f.object.new_record?
         f.input :password
         f.input :password_confirmation

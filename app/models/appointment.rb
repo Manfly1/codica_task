@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Appointment < ApplicationRecord
   MAX_APPOINTMENTS = 10
 
@@ -15,12 +17,12 @@ class Appointment < ApplicationRecord
     return if reccomendation.blank?
     return if closed?
 
-    self.update_column(closed:  true)
+    update_column(closed: true)
   end
 
   def validate_appointments_count
-    if self.doctor.appointments.count >= MAX_APPOINTMENTS
-      self.errors.add(:base, "Doctor has more than #{MAX_APPOINTMENTS} active consultations")
+    if doctor.appointments.count >= MAX_APPOINTMENTS
+      errors.add(:base, "Doctor has more than #{MAX_APPOINTMENTS} active consultations")
     end
   end
 end

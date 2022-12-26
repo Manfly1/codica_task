@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 ActiveAdmin.register Patient, namespace: false do
-  permit_params :role, :phone, :password, :password_confirmation
+  permit_params :type, :phone, :password, :password_confirmation
 
   show do
     attributes_table do

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable, and :omniauthable
@@ -5,15 +7,11 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :registerable
 
   validates :phone, presence: true, numericality: true, length: { minimum: 9, maximum: 16 }
-  
-  before_save :setup_default_role
-  
-  def name
-    phone
-  end
+
+  before_save :set_type
 
   def admin?
-    is_a?(Admin)
+    is_a?(AdminUser)
   end
 
   def doctor?
@@ -23,14 +21,18 @@ class User < ApplicationRecord
   def patient?
     is_a?(Patient)
   end
-  
+
   def email_required?
     false
   end
 
+  def name
+    phone
+  end
+
   private
 
-  def setup_default_role
-    self.role ||= Patient.name
+  def set_type
+    self.type ||= Patient.name
   end
 end

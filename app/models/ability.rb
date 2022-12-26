@@ -4,12 +4,10 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    if user.admin?
-      can :manage, :all
-    end
+    can :manage, :all if user.admin?
 
     if user.doctor?
-      can :read, ActiveAdmin::Page, name: "Dashboard"
+      can :read, ActiveAdmin::Page, name: 'Dashboard'
       can :read, Doctor, id: user.id
       can :read, Appointment, doctor_id: user.id
       can :update, Appointment, doctor_id: user.id, closed: false
@@ -17,11 +15,11 @@ class Ability
     end
 
     if user.patient?
-      can :read, ActiveAdmin::Page, name: "Dashboard"
+      can :read, ActiveAdmin::Page, name: 'Dashboard'
       can :read, Doctor
       can :read, Category
-      can [:read, :update], Patient, id: user.id
-      can [:read, :create], Appointment, patient_id: user.id
+      can %i[read update], Patient, id: user.id
+      can %i[read create], Appointment, patient_id: user.id
     end
   end
 end
