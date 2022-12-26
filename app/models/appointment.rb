@@ -5,7 +5,8 @@ class Appointment < ApplicationRecord
   belongs_to :patient
 
   validates :reccomendation, length: { minimum: 10, maximum: 100 }, allow_blank: true
-  validates :validate_appointments_count
+  validate :validate_appointments_count
+
   before_save :close_appointment
 
   private

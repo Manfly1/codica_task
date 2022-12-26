@@ -7,6 +7,10 @@ class User < ApplicationRecord
   validates :phone, presence: true, numericality: true, length: { minimum: 9, maximum: 16 }
   
   before_save :setup_default_role
+  
+  def name
+    phone
+  end
 
   def admin?
     is_a?(Admin)
@@ -19,10 +23,14 @@ class User < ApplicationRecord
   def patient?
     is_a?(Patient)
   end
+  
+  def email_required?
+    false
+  end
 
   private
 
   def setup_default_role
-    self.role ||= Patient.phone
+    self.role ||= Patient.name
   end
 end
