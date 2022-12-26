@@ -25,15 +25,14 @@ end
   User.create!(phone: Faker::PhoneNumber.cell_phone_with_country_code, password: 'password1', password_confirmation: 'password1', categories: categories.sample, avatar: Faker::LoremFlickr.image, type: 'Doctor')
 end
 
-40.times do
+30.times do
   User.create!(phone: Faker::PhoneNumber.cell_phone_with_country_code, password: 'password2', password_confirmation: 'password2', type: 'Patient')
 end
 
-50.times do
+10.times do
   appointment = Appointment.new
   appointment.patient = Patient.all.sample
   appointment.doctor = Doctor.all.sample
-  appointment.reccomendation = Faker::Lorem.sentence(word_count: rand(10..10))
   
   while appointment.doctor.appointments.where(closed: false).count > 10
       appointment.doctor = Doctor.all.sample
