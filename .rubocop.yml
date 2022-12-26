@@ -1,6 +1,7 @@
 # http://shopify.github.io/ruby-style-guide/rubocop.yml
 #
 AllCops:
+  NewCops: enable
   TargetRubyVersion: 2.5.7
   Exclude:
     - 'db/**/*'
@@ -12,12 +13,11 @@ Style/Documentation:
   Enabled: false
 Layout/LineLength:
   Max: 120
-Style/GuardClause:
-  Enabled: false
-Metrics/LineLength:
   Exclude:
     - 'db/migrate/*.rb'
     - 'db/schema.rb'
+Style/GuardClause:
+  Enabled: false
 Metrics/ModuleLength:
   Exclude:
     - '**/*_spec.rb'
