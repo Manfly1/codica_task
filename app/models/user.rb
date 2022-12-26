@@ -7,7 +7,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :registerable
   PHONE_NUMBER_REGEXP = /\A\+[0-9]+\z/.freeze
 
-  validates :phone, presence: true, uniqueness: { allow_blank: true, if: :phone_number_changed? },
+  validates :phone, presence: true, uniqueness: { allow_blank: true, if: :phone_changed? },
                     format: { with: PHONE_NUMBER_REGEXP }, length: { minimum: 10, maximum: 16 }
 
   before_save :set_type

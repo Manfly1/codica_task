@@ -5,7 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-User.create!(phone: '+380999999999', password: 'password', password_confirmation: 'password', type: 'AdminUser')
+User.create!(phone: Faker::PhoneNumber.cell_phone_with_country_code, password: 'password', password_confirmation: 'password', type: 'AdminUser')
 
 categories = [
   "Family physicians",
@@ -22,5 +22,22 @@ categories.each do |category|
 end
 
 20.times do
-  User.create!(phone: '+380888888888', password: 'password1', password_confirmation: 'password1', categories: categories.sample, avatar: Faker::LoremFlickr.image, type: 'Doctor')
+  User.create!(phone: Faker::PhoneNumber.cell_phone_with_country_code, password: 'password1', password_confirmation: 'password1', categories: categories.sample, avatar: Faker::LoremFlickr.image, type: 'Doctor')
+end
+
+40.times do
+  User.create!(phone: Faker::PhoneNumber.cell_phone_with_country_code, password: 'password2', password_confirmation: 'password2', type: 'Patient')
+end
+
+50.times do
+  appointment = Appointment.new
+  appointment.patient = Patient.all.sample
+  appointment.doctor = Doctor.all.sample
+  appointment.reccomendation = Faker::Lorem.sentence(word_count: rand(10..10))
+  
+  while appointment.doctor.appointments.where(closed: false).count > 10
+      appointment.doctor = Doctor.all.sample
+  end
+
+  appointment.save!
 end
