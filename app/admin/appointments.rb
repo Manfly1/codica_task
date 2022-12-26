@@ -18,7 +18,6 @@ ActiveAdmin.register Appointment do
                                        ["#{doctor.phone}, (#{doctor.categories.pluck(:name).join(', ')})", doctor.id]
                                      }
         f.input :patient_id, input_html: { value: current_user.id }, as: :hidden
-        # include_blank: false
         f.actions
       end
     end

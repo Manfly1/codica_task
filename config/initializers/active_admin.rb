@@ -18,7 +18,7 @@ ActiveAdmin.setup do |config|
   #
   # Note: Aim for an image that's 21px high so it fits in the header.
   #
-  config.site_title_image = 'https://media.istockphoto.com/vectors/caduceus-vector-id1165451954?k=20&m=1165451954&s=612x612&w=0&h=_XT30FUJJ0i5KGeo7ukbXhX4Gf7GLRW6QDQSWo9wLzk='
+  config.site_title_image = 'https://s.dou.ua/CACHE/images/img/static/companies/lg_red3x/0b3d1ca4d846bf9f9df056467c00ab7f.png'
 
   # == Default Namespace
   #
@@ -177,7 +177,9 @@ ActiveAdmin.setup do |config|
   # config.favicon = 'favicon.ico'
 
   # == Meta Tags
-  #
+  meta_tags_options = { viewport: 'width=device-width, initial-scale=1' }
+  config.meta_tags = meta_tags_options
+  config.meta_tags_for_logged_out_pages = meta_tags_options
   # Add additional meta tags to the head element of active admin pages.
   #
   # Add tags to all pages logged in users see:
