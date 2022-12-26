@@ -1,0 +1,29 @@
+# http://shopify.github.io/ruby-style-guide/rubocop.yml
+#
+AllCops:
+  TargetRubyVersion: 2.5.7
+  Exclude:
+    - 'db/**/*'
+    - 'spec/swagger_helper.rb'
+Style/Documentation:
+  Enabled: false
+Layout/LineLength:
+  Max: 120
+Metrics/LineLength:
+  Exclude:
+    - 'db/migrate/*.rb'
+    - 'db/schema.rb'
+Metrics/ModuleLength:
+  Exclude:
+    - '**/*_spec.rb'
+Metrics/BlockLength:
+  Exclude:
+    - 'db/schema.rb'
+    - 'spec/controllers/*.rb'
+    - 'spec/factories/*.rb'
+Metrics/MethodLength:
+  Max: 25
+  Exclude:
+    - 'spec/controllers/*.rb'
+    - 'spec/factories/*.rb'
+    - 'spec/swagger/**/*.rb'
