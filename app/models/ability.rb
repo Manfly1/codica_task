@@ -4,7 +4,9 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    can :manage, :all
+    if user.admin?
+      can :manage, :all
+    end
 
     if user.doctor?
       can :read, ActiveAdmin::Page, name: 'Dashboard'

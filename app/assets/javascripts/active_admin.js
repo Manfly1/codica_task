@@ -1,1 +1,2 @@
-import 'arctic_admin'
+//= require active_admin/base
+

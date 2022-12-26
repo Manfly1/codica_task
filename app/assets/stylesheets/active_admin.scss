@@ -8,13 +8,11 @@
 // $sidebar-width: 242px;
 
 // Active Admin's got SASS!
-@import "active_admin/mixins";
-@import "arctic_admin/base";
+$primary-color: #35a1a5;
+@import 'formadmin/formadmin';
 
 // Overriding any non-variable Sass must be done after the fact.
 // For example, to change the default status-tag color:
 //
 //   .status_tag { background: #6090DB; }
 
-//@import 'wigu/active_admin_theme';
-$primary-color: #2dbb43;

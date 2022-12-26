@@ -37,8 +37,7 @@ gem 'jbuilder', '~> 2.5'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'activeadmin'
-gem 'arctic_admin'
-gem 'active_material'
+gem 'formadmin'
 gem 'awesome_print'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'cancancan'

@@ -2,7 +2,11 @@
 
 ActiveAdmin.register Doctor, namespace: false do
   permit_params :doctor_id, :type, :phone, :password, :password_confirmation, :avatar, category_ids: []
-
+  sidebar :filters, only: :search do
+    filters = {
+     categories: {}
+    }
+  end
   index do
     selectable_column
     if current_user.admin?
@@ -40,4 +44,7 @@ ActiveAdmin.register Doctor, namespace: false do
     end
     f.actions
   end
+
+  filter :categories
+
 end
